@@ -12,15 +12,15 @@ from itertools import product
 params = {
     'name': 'testing',
     'widths': range(32, 65, 8),
-    'depths': [2],
+    'depths': [1],
     'n_samples': range(50, 251, 50),
-    'repetitions': range(1),
+    'repetitions': range(20),
     'in_dim': 1,
     'out_dim': 1,
     'x_min': -1.0,
     'x_max': 1.0,
     'dx': 0.01,
-    'num_epochs': 500,
+    'num_epochs': 1000,
     'make_slurm_script': True,
     'slurm_params': {
         'account': 'cis240124p',
