@@ -11,7 +11,6 @@ import yaml
 import torch
 import torch.nn as nn
 import time
-import platform
 
 
 class FullyConnectedNetwork(nn.Module):
