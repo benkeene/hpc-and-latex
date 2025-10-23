@@ -10,7 +10,7 @@
 set -e  # Exit on error
 
 # Extract experiment name from makeparams.py
-EXPNAME=$(python -c "
+export EXPNAME=$(python -c "
 import sys
 sys.path.insert(0, '.')
 from makeparams import params
@@ -28,9 +28,11 @@ python makeparams.py
 echo "  Parameter files generated in params/$EXPNAME/"
 echo
 
-# Step 2: Run all experiments in parallel
-echo "[Step 2/4] Running experiments in parallel..."
-parallel --bar --line-buffer --joblog progress.log python runner.py ::: params/$EXPNAME/*.yaml
+# Step 2: Run all experiments in serial
+echo "[Step 2/4] Running experiments in serial..."
+for file in params/$EXPNAME/*.yaml;
+do python runner.py $file;
+done
 echo "  All experiments completed"
 echo
 
